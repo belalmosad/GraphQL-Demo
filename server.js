@@ -29,12 +29,16 @@ const posts = [
 const resolvers = {
     Query: {
         post: (_, args) => {return posts.find((post) => {return post.id == args.id})},
+        posts : () => {return posts}
     },
     Mutation: {
         addPost: (_, args) => {
             let newPost = {id: args.id, title: args.title, content: args.content}
             posts.push(newPost);
             return newPost
+        }, 
+        deletePost: (_, args) => {
+            return posts.filter((post) => {return post.id != args.id})
         }
     }
 }
