@@ -9,17 +9,29 @@ const posts = [
     {
         id: 1,
         title: 'post 1',
-        content: 'post 1 content'
+        content: 'post 1 content',
+        comment: {
+            postId: 1,
+            username: "belal"
+        }
     },
     {
         id: 2,
         title: 'post 2',
-        content: 'post 2 content'
+        content: 'post 2 content',
+        comment: {
+            postId: 2,
+            username: "belal"
+        }
     },
     {
         id: 3,
         title: 'post 3',
-        content: 'post 3 content'
+        content: 'post 3 content',
+        comment: {
+            postId: 3,
+            username: "belal"
+        }
     },
 ]
 
@@ -42,6 +54,12 @@ const resolvers = {
             let newpost = {id: args.id, title: args.title, content: args.content}
             posts[tobeUpdated] = newpost
             return newpost
+        },
+        addComment: (_, args) => {
+            let newComment = {id: args.postId, username: args.username}
+            let postIndex = posts.findIndex((post) => post.id == args.postId);
+            posts[postIndex].comment = newComment;
+            return newComment;
         }
     }
 }
