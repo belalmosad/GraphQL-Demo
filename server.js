@@ -28,7 +28,14 @@ const posts = [
 
 const resolvers = {
     Query: {
-        post: (_, id) => {posts.find((post) => {return post.id == id})}
+        post: (_, args) => {return posts.find((post) => {return post.id == args.id})},
+    },
+    Mutation: {
+        addPost: (_, args) => {
+            let newPost = {id: args.id, title: args.title, content: args.content}
+            posts.push(newPost);
+            return newPost
+        }
     }
 }
 const server = new ApolloServer({
