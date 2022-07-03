@@ -6,5 +6,5 @@ type Post {
 }
 
 type Query {
-    post: Post
+    post(id: Int): Post
 }

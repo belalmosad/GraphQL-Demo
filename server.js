@@ -28,7 +28,7 @@ const posts = [
 
 const resolvers = {
     Query: {
-
+        post: (_, id) => {posts.find((post) => {post.id == id})}
     }
 }
 const server = new ApolloServer({
