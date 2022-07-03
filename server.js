@@ -1,8 +1,8 @@
-const { ApolloServer, gql } = require("apollo-server-express");
+const {ApolloServer, gql} = require('apollo-server');
 const fs = require("fs");
 const path = require("path");
 
-const schema = fs.readFileSync(path.join(__dirname + "typeDefs.graphql"));
+let  schema = fs.readFileSync('./typeDefs.graphql', {encoding: 'utf-8'});
 const typeDefs = gql(schema);
 
 const posts = [
@@ -28,10 +28,14 @@ const posts = [
 
 const resolvers = {
     Query: {
-        post: (_, id) => {posts.find((post) => {post.id == id})}
+        post: (_, id) => {posts.find((post) => {return post.id == id})}
     }
 }
 const server = new ApolloServer({
     resolvers,
     typeDefs
 })
+
+server
+ .listen({ port: 4000 })
+ .then(({ url }) => console.log(`app running at ${url}`));
