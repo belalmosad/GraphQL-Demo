@@ -10,19 +10,16 @@ const posts = [
         id: 1,
         title: 'post 1',
         content: 'post 1 content'
-
     },
     {
         id: 2,
         title: 'post 2',
         content: 'post 2 content'
-
     },
     {
         id: 3,
         title: 'post 3',
         content: 'post 3 content'
-
     },
 ]
 
@@ -39,6 +36,12 @@ const resolvers = {
         }, 
         deletePost: (_, args) => {
             return posts.filter((post) => {return post.id != args.id})
+        },
+        updatePost: (_, args) => {
+            let tobeUpdated = posts.findIndex((post) => post.id == args.id);
+            let newpost = {id: args.id, title: args.title, content: args.content}
+            posts[tobeUpdated] = newpost
+            return newpost
         }
     }
 }
