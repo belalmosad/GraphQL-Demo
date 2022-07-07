@@ -1,2 +1,2 @@
-#GraphQL Demo
-Demo in GraphQL Course
+# GraphQL Demo
+Demo in GraphQL Course performing CRUD operations.
