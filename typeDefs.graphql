@@ -1,4 +1,5 @@
 type Comment {
+    id: Int
     postId: Int
     username: String
 }
@@ -18,5 +19,7 @@ type Mutation {
     addPost(id: Int, title: String, content: String): Post,
     deletePost(id: Int): [Post],
     updatePost(id: Int, title: String, content: String): Post,
-    addComment(postId: Int, username: String): Comment
+    addComment(postId: Int, username: String): Comment,
+    deleteComment(id: Int, postId: Int): String,
+    updateComment(id: Int, postId: Int): Comment
 }
