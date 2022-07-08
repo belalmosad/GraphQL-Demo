@@ -12,7 +12,8 @@ type Post {
 
 type Query {
     post(id: Int): Post,
-    posts: [Post]
+    posts: [Post],
+    comments(postId: Int): [Comment]
 }
 
 type Mutation {
