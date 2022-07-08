@@ -4,7 +4,7 @@ const postSchema = new mongoose.Schema(
   {
     id: Number,
     title: String,
-    text: String,
+    content: String,
   }
 );
 
