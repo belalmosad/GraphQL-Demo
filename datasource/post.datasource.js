@@ -9,8 +9,16 @@ class PostDataSource extends DataSource {
     return Post.create(input);
   }
   async getAllPosts() {
-    const posts = await Post.find();
-    return posts;
+    return Post.find();
+  }
+  async getPostById(postId) {
+    return Post.findOne({id: postId});
+  }
+  async deletePost(postId) {
+    return Post.deleteOne({id: postId});
+  }
+  async updatePost(postId, data) {
+    return Post.updateOne({id: postId}, {$set: data})
   }
 }
 
