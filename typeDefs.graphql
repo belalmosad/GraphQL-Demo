@@ -1,26 +1,29 @@
 type Comment {
-    id: Int
-    postId: Int
+    id: ID!
+    postId: ID!
     content: String
 }
 type Post {
-    id: Int,
+    id: ID!,
     title: String,
     content: String,
     comments: [Comment]
 }
 
 type Query {
-    post(id: Int): Post,
+    post(id: ID!): Post,
     posts: [Post],
-    comments(postId: Int): [Comment]
+    comments(postId: ID!): [Comment]
 }
 
 type Mutation {
-    addPost(id: Int, title: String, content: String): Post,
-    deletePost(id: Int): [Post],
-    updatePost(id: Int, title: String, content: String): Post,
-    addComment(id: Int,postId: Int, content: String): Comment,
-    deleteComment(id: Int, postId: Int): [Comment],
-    updateComment(id: Int, postId: Int): Comment
+    # Posts Mutation
+    addPost(id: ID!, title: String, content: String): Post,
+    deletePost(id: ID!): [Post],
+    updatePost(id: ID!, title: String, content: String): Post,
+
+    # Comment Mutation
+    addComment(id: ID!,postId: ID!, content: String!): Comment,
+    deleteComment(id: ID!, postId: ID!): [Comment],
+    updateComment(id: ID!, postId: ID!, content: String!): Comment
 }
