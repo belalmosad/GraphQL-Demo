@@ -3,8 +3,8 @@ const mongoose = require("mongoose");
 const postSchema = new mongoose.Schema(
   {
     id: {
-        type: Number,
-        unique: true
+        type: String,
+        uniqie: true
     },
     title: String,
     content: String,
