@@ -16,7 +16,7 @@ class CommentDataSource extends DataSource {
         return Comment.deleteOne({ id: commentId, postId: postID })
     }
     async updateComment(commentId, postId, data) {
-        return Comment.updateOne({ id: commentId, postId: postId }, { $set: data })
+        return Comment.updateOne({ id: commentId, postId: postId }, { $set: {data} })
     }
 }
 

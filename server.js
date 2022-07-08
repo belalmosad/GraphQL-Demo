@@ -16,8 +16,8 @@ const server = new ApolloServer({
     resolvers,
     typeDefs,
     dataSources: () => ({
-        post: new PostDataSource,
-        comment: new CommentDataSource
+        post: new PostDataSource(),
+        comment: new CommentDataSource()
     })
 })
 

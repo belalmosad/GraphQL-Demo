@@ -18,7 +18,7 @@ class PostDataSource extends DataSource {
     return Post.deleteOne({id: postId});
   }
   async updatePost(postId, data) {
-    return Post.updateOne({id: postId}, {$set: data})
+    return Post.updateOne({id: postId}, {$set: {data}})
   }
 }
 
