@@ -8,6 +8,10 @@ class CommentDataSource extends DataSource {
     create(input) {
         return Comment.create(input);
     }
+    async getComment (id, postId) {
+        const comments = await Comment.find({postId});
+        return comments.find((comment) => {return comment.id == id});
+    }
     async getCommentsByPostId(postId) {
         const comments = await Comment.find({ postId });
         return comments;
@@ -15,8 +19,8 @@ class CommentDataSource extends DataSource {
     async deleteComment(commentId, postID) {
         return Comment.deleteOne({ id: commentId, postId: postID })
     }
-    async updateComment(commentId, postId, data) {
-        return Comment.updateOne({ id: commentId, postId: postId }, { $set: {data} })
+    async updateComment(commentId, postId, content) {
+        return Comment.updateOne({ id: commentId, postId: postId }, { $set: {content} })
     }
 }
 
