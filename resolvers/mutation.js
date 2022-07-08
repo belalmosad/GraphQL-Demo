@@ -5,23 +5,30 @@ const Mutation = {
         return context.dataSources.post.create(input);
     },
 
-    deletePost: (_, { postId }, context) => {
-        return context.dataSources.post.deletePost(postId)
+    deletePost: async (_, { id }, context) => {
+        await context.dataSources.post.deletePost(id)
+        return context.dataSources.post.getAllPosts();
     },
 
-    updatePost: (_, { postId, data }, context) => {
-        return context.dataSources.post.updatePost(postId, data);
+    updatePost: async (_, { id, title, content }, context) => {
+        await context.dataSources.post.updatePost(id, title, content);
+        const postAfterUpdate = await context.dataSources.post.getPostById(id);
+        return postAfterUpdate;
     },
 
     // Comment CRUD operations
     addComment: (_, input, context) => {
         return context.dataSources.comment.create(input);
     },
-    deleteComment: (_, {commentId, postId}, context) => {
-        return context.dataSources.comment.deleteComment(commentId, postId);
+    deleteComment: async (_, {id, postId}, context) => {
+        await context.dataSources.comment.deleteComment(id, postId);
+        const remainingCommentsAfterDelete = await context.dataSources.comment.getCommentsByPostId(postId);
+        return remainingCommentsAfterDelete;
     },
-    updateComment: (_, {commentId, postId, data}, context) => {
-        return context.dataSources.comment.updateComment(commentId, postId, data)
+    updateComment: async (_, {id, postId, content}, context) => {
+        await context.dataSources.comment.updateComment(id, postId, content);
+        const commentAfterUpdate = context.dataSources.comment.getComment(id, postId);
+        return commentAfterUpdate;
     }
 
 };
