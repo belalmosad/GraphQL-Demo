@@ -12,6 +12,7 @@
   "dependencies": {
     "apollo-datasource": "^3.3.2",
     "apollo-server": "^3.9.0",
-    "graphql": "^16.5.0"
+    "graphql": "^16.5.0",
+    "mongoose": "^6.4.3"
   }
 }

@@ -58,7 +58,7 @@ const resolvers = {
         addComment: (_, args) => {
             let newComment = {id: args.postId, username: args.username}
             let postIndex = posts.findIndex((post) => post.id == args.postId);
-            posts[postIndex].comment = newComment;
+            posts[postIndex].comments.push(newComment);
             return newComment;
         }
     }
