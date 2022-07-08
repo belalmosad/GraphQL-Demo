@@ -2,6 +2,7 @@ const {ApolloServer, gql} = require('apollo-server');
 const fs = require("fs");
 const CommentDataSource = require('./datasource/comment.datasource');
 const PostDataSource = require('./datasource/post.datasource');
+const resolvers = require('./resolvers/index');
 const mongoose = require('mongoose');
 
 mongoose.connect('mongodb+srv://admin:123@cluster0.mawss.mongodb.net/?retryWrites=true&w=majority')
