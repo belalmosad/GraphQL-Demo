@@ -12,6 +12,12 @@ class CommentDataSource extends DataSource {
         const comments = await Comment.find({ postId });
         return comments;
     }
+    async deleteComment(commentId, postID) {
+        return Comment.deleteOne({ id: commentId, postId: postID })
+    }
+    async updateComment(commentId, postId, data) {
+        return Comment.updateOne({ id: commentId, postId: postId }, { $set: data })
+    }
 }
 
 module.exports = CommentDataSource;
