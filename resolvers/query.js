@@ -1,12 +1,12 @@
 const Query = {
     posts: (_, args, context) => {
-      return context.dataSources.posts.getAllPosts();
+      return context.dataSources.post.getAllPosts();
     },
     comments: (_, { postId }, context) => {
-      return context.dataSources.comments.getCommentsByPostId(postId);
+      return context.dataSources.comment.getCommentsByPostId(postId);
     },
     post: (_args, {postId}, context) => {
-        return context.dataSources.posts.getPostById(postId);
+        return context.dataSources.post.getPostById(postId);
     }
   };
   module.exports = Query;
