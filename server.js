@@ -10,28 +10,28 @@ const posts = [
         id: 1,
         title: 'post 1',
         content: 'post 1 content',
-        comment: {
+        comments: [{
             postId: 1,
             username: "belal"
-        }
+        }]
     },
     {
         id: 2,
         title: 'post 2',
         content: 'post 2 content',
-        comment: {
+        comments: [{
             postId: 2,
             username: "belal"
-        }
+        }]
     },
     {
         id: 3,
         title: 'post 3',
         content: 'post 3 content',
-        comment: {
+        comments: [{
             postId: 3,
             username: "belal"
-        }
+        }]
     },
 ]
 
@@ -56,7 +56,7 @@ const resolvers = {
             return newpost
         },
         addComment: (_, args) => {
-            let newComment = {id: args.postId, username: args.username}
+            let newComment = {postId: args.postId, username: args.username}
             let postIndex = posts.findIndex((post) => post.id == args.postId);
             posts[postIndex].comments.push(newComment);
             return newComment;
